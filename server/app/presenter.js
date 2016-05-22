@@ -21,15 +21,20 @@ var Presenter = {
 		navigationDocument.pushDocument(xml);
 	},
 
+	replaceDocument: function(newDoc, oldDoc) {
+		navigationDocument.replaceDocument(newDoc, oldDoc);
+	},
+
 	loadStationDepartures: function(event) {
 		var elem = event.target,
-			stationCode = elem.getAttribute('stationCode');
+			stationCode = elem.getAttribute('stationCode'),
+			loadingTemplateDoc = createLoadingTemplate('Fetching train times...');
 
-		Presenter.pushDocument(createLoadingTemplate('Fetching train times...'));
+		Presenter.pushDocument(loadingTemplateDoc);
 
 		resourceLoader.loadResource(`${Presenter.options.BASEURL}templates/departures.xml.js?stationCode=${stationCode}`, function(resource) {
-        	var doc = Presenter.makeDocument(resource);
-            Presenter.pushDocument(doc);
+        	var departuresDoc = Presenter.makeDocument(resource);
+            Presenter.replaceDocument(departuresDoc, loadingTemplateDoc);
         });
 	}
 }
