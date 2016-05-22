@@ -37,23 +37,24 @@ var resourceLoader;
 
 App.onLaunch = function(options) {
     var jsFiles = [
-        `${options.BASEURL}resourceloader.js`,
-        `${options.BASEURL}presenter.js`
-    ];
+            `${options.BASEURL}resourceloader.js`,
+            `${options.BASEURL}presenter.js`
+        ],
+        loadingDoc = createLoadingTemplate('Initializing...');
 
-    navigationDocument.pushDocument(createLoadingTemplate('Initializing...'));
+    navigationDocument.pushDocument(loadingDoc);
 
     evaluateScripts(jsFiles, function(success) {
         if (success) {
             resourceLoader = new ResourceLoader(options.BASEURL);
             resourceLoader.loadResource(`${options.BASEURL}templates/list.xml.js`, function(resource) {
-                var doc;
+                var stationListDoc;
 
                 Presenter.setOptions(options);
-                doc = Presenter.makeDocument(resource);
+                stationListDoc = Presenter.makeDocument(resource);
 
-                doc.addEventListener('select', Presenter.loadStationDepartures.bind(Presenter));
-                Presenter.pushDocument(doc);
+                stationListDoc.addEventListener('select', Presenter.loadStationDepartures.bind(Presenter));
+                Presenter.replaceDocument(stationListDoc, loadingDoc);
             });
         } else {
             navigationDocument.presentModal(createAlert('Error!', 'Failed to load scripts for this application.'));
