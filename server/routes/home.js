@@ -3,9 +3,9 @@
 // TODO... make this a handlebars template that does something more interesting...
 // TODO... what about that ok button press?
 // TODO... stationInfo API should sort stations alphabetically
-// TODO... map load times are very slow and have no loading indicators
 
 var API_BASE = 'http://bart.crudworks.org/api',
+	MAPBOX_API_TOKEN = process.env.MAPBOX_API_TOKEN,
 	httpRequest = require('request');
 
 module.exports = function(app) {
@@ -41,7 +41,7 @@ module.exports = function(app) {
 					+					'<relatedContent>'
 					+						'<lockup>'
 					+							'<title>' + station.name + '</title>'
-					+							'<img src="http://staticmap.openstreetmap.de/staticmap.php?center=' + station.gtfs_latitude + ',' + station.gtfs_longitude + '&amp;zoom=18&amp;size=1000x600&amp;maptype=osmarenderer&amp;markers=' + station.gtfs_latitude + ',' + station.gtfs_longitude + '" />'
+					+							'<img src="https://api.mapbox.com/styles/v1/mapbox/streets-v8/static/' + station.gtfs_longitude + ',' + station.gtfs_latitude + ',17,0,0/1000x600?access_token=pk.eyJ1Ijoic2ltb25wcmlja2V0dCIsImEiOiJjaW9oeGMyejgwMXI3dXBtM2c2MXB6Z3I2In0.uiZQD29zrjNp54Xt4MOuXA" />'
 					+							'<description>' + station.intro + '</description>'
 					+						'</lockup>'
 					+					'</relatedContent>'
