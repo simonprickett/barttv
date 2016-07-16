@@ -2,7 +2,6 @@
 
 // TODO... make this a handlebars template that does something more interesting...
 // TODO... what about that ok button press?
-// TODO... stationInfo API should sort stations alphabetically
 
 var API_BASE = 'http://bart.crudworks.org/api',
 	MAPBOX_API_TOKEN = process.env.MAPBOX_API_TOKEN,
