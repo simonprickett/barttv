@@ -40,7 +40,7 @@ module.exports = function(app) {
 					+					'<relatedContent>'
 					+						'<lockup>'
 					+							'<title>' + station.name + '</title>'
-					+							'<img src="https://api.mapbox.com/styles/v1/mapbox/streets-v8/static/' + station.gtfs_longitude + ',' + station.gtfs_latitude + ',17,0,0/1000x600?access_token=pk.eyJ1Ijoic2ltb25wcmlja2V0dCIsImEiOiJjaW9oeGMyejgwMXI3dXBtM2c2MXB6Z3I2In0.uiZQD29zrjNp54Xt4MOuXA" />'
+					+							'<img src="https://api.mapbox.com/styles/v1/mapbox/streets-v8/static/' + station.gtfs_longitude + ',' + station.gtfs_latitude + ',17,0,0/1000x600?access_token=' + MAPBOX_API_TOKEN + '" />'
 					+							'<description>' + station.intro + '</description>'
 					+						'</lockup>'
 					+					'</relatedContent>'
