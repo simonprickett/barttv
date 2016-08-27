@@ -1,5 +1,3 @@
-// TODO remove loading screen from back hierarchy
-
 var Presenter = {
 	setOptions: function(options) {
 		Presenter.options = options;

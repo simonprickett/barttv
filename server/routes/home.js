@@ -89,7 +89,6 @@ module.exports = function(app) {
 
 			for (; n < destinations.length; n++) {
 				destination = destinations[n];
-				console.log(destination.destination);
 
 				resJS += '<listItemLockup>';
 				resJS += 	'<title>' + destination.destination + '</title>';
@@ -101,7 +100,6 @@ module.exports = function(app) {
 					departure = destination.estimate[m];
 
 					resJS += 	'<title>' + departure.minutes + ' minutes, ' + departure.length + ' cars</title>';
-					console.log(departure.minutes + ' ' + departure.length + ' ' + departure.hexcolor);
 				}
 
 				resJS += 		'</lockup>';
