@@ -2,3 +2,4 @@
 *.log
 *.bak
 node_modules/
+xcuserdata/
