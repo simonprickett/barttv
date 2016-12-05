@@ -1,7 +1,12 @@
 "use strict";
 
-// TODO... make this a handlebars template that does something more interesting...
-// TODO... what about that ok button press?
+// TODO... make this a handlebars template?
+// TODO... map marker
+// TODO... can we get border around this?
+// TODO... transition screen styling
+// TODO... deal with Leaving minutes, 10 cars
+// TODO... supporting image or something on the departure detail page
+
 
 var API_BASE = 'http://bart.crudworks.org/api',
 	MAPBOX_API_TOKEN = process.env.MAPBOX_API_TOKEN,
@@ -22,12 +27,12 @@ module.exports = function(app) {
 				+ '<?xml version="1.0" encoding="UTF-8" ?>'
 				+ '<document>'
 				+ 	'<listTemplate>'
-				+		'<banner>'
-				+			'<title>Real Time BART Information</title>'
-				+		'</banner>'
-				+		'<list>'
+				+		'<background>'
+				+			'<img src="http://localhost:8000/images/barttv_bg.png" />'
+				+		'</background>'
+				+		'<list style="color: rgba(0, 155, 218);">'
 				+			'<header>'
-				+				'<title>Stations</title>'
+				+				'<title style="color: rgba(255, 255, 255);">Real Time BART Information</title>'
 				+			'</header>'
 				+			'<section>'
 
@@ -39,9 +44,9 @@ module.exports = function(app) {
 					+					'<title>' + station.name + '</title>'
 					+					'<relatedContent>'
 					+						'<lockup>'
-					+							'<title>' + station.name + '</title>'
-					+							'<img src="https://api.mapbox.com/styles/v1/mapbox/streets-v8/static/' + station.gtfs_longitude + ',' + station.gtfs_latitude + ',17,0,0/1000x600?access_token=' + MAPBOX_API_TOKEN + '" />'
-					+							'<description>' + station.intro + '</description>'
+					+							'<title style="color: rgba(255, 255, 255);">' + station.name + '</title>'
+					+							'<img src="https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/' + station.gtfs_longitude + ',' + station.gtfs_latitude + ',17,0,0/1000x600?access_token=' + MAPBOX_API_TOKEN + '" />'
+					+							'<description style="tv-text-style: none; font-size: 28; font-weight: light; color: rgba(255, 255, 255)">' + station.intro + '</description>'
 					+						'</lockup>'
 					+					'</relatedContent>'
 					+				'</listItemLockup>';
@@ -74,13 +79,15 @@ module.exports = function(app) {
 				+ '<?xml version="1.0" encoding="UTF-8" ?>'
 				+ 	'<document>'
 				+ 		'<listTemplate>'
-				+			'<background></background>'
+				+			'<background>'
+				+				'<img src="http://localhost:8000/images/barttv_bg.png" />'
+				+			'</background>'
 				+			'<banner>'
-				+				'<title>Departures from ' + destinations.name + '</title>'
+				+				'<title style="color: rgba(255, 255, 255);">' + destinations.name + '</title>'
 				+			'</banner>'
-				+			'<list>'
+				+			'<list style="color: rgba(0, 155, 218);">'
 				+				'<header>'
-				+					'<title>Towards</title>'
+				+					'<title style="color: rgba(255, 255, 255);">Towards:</title>'
 				+				'</header>'
 				+				'<section>'
 
@@ -94,7 +101,7 @@ module.exports = function(app) {
 				resJS += 	'<title>' + destination.destination + '</title>';
 				resJS += 	'<relatedContent>';
 				resJS += 		'<lockup>';
-				resJS +=			'<title>Towards ' + destination.destination + '</title>'
+				resJS +=			'<title style="color: rgba(255, 255, 255);">Departures:</title>'
 
 				for (m = 0; m < destination.estimate.length; m++) {
 					departure = destination.estimate[m];
