@@ -9,7 +9,7 @@
 	},
 	"respository": {
 		"type": "git",
-		"url": "TODO"
+		"url": "https://github.com/simonprickett/barttv.git"
 	},
 	"keywords": [
 		"bart",
@@ -20,9 +20,9 @@
 		"start": "node server.js"
 	},
 	"dependencies": {
-		"express": "4.13.4",
-		"body-parser": "1.15.0",
-		"request": "2.72.0",
-		"handlebars": "4.0.5"
+		"express": "4.14.0",
+		"body-parser": "1.15.2",
+		"request": "2.79.0",
+		"handlebars": "4.0.6"
 	}
 }
