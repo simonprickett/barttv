@@ -6,4 +6,12 @@ Better documentation will follow.
 
 This uses MapBox static maps API, so you will need to get a key for MapBox and set the environment variable `MAPBOX_API_KEY` before starting the Node server.
 
+To start the server:
+
+```
+cd server
+npm install
+npm start
+```
+
 ![demo](demo.gif)
